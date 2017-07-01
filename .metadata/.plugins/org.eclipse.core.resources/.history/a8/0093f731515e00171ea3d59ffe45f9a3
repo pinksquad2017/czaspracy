@@ -14,8 +14,8 @@ public class App {
 	
 	private void start(){
 		
-		DataLoader dataLoader = new DataLoader();
-		if(dataLoader.getData() != null){
+		DataLoader dl = new DataLoader();
+		if(dl.getData() != null){
 			
 			
 		}

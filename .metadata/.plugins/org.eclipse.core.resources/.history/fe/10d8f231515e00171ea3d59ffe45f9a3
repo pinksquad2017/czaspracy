@@ -3,7 +3,8 @@ package czaspracy;
 public class Record {
 	
 	
-	private String name;
+	private String firstName;
+	private String lastName;
 	private String taskName;
 	private double taskDuration;
 	private String project;
@@ -12,10 +13,11 @@ public class Record {
 	private String year;
 
 	
-	public Record(String name, String taskName, 
+	public Record(String firstName, String lastName, String taskName, 
 			String project, String day, String month,String year, double taskDuration){
 		
-		this.name = name;
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.taskName = taskName;
 		this.taskDuration = taskDuration;
 		this.project = project;
@@ -26,13 +28,23 @@ public class Record {
 	}
 
 
-	public String getName() {
-		return this.name;
+	public String getFirstName() {
+		return this.firstName;
 	}
 
 
-	public void setName(String firstName) {
-		this.name = firstName;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+
+	public String getLastName() {
+		return this.lastName;
+	}
+
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 
