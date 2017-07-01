@@ -1,0 +1,19 @@
+package czaspracy;
+
+import java.util.ArrayList;
+
+public class Menu {
+
+	private ArrayList<Record> data;
+	
+	public Menu(ArrayList<Record> data){
+		
+		this.data = data;
+	}
+	
+	public void start(){
+		
+	}
+	
+	
+}

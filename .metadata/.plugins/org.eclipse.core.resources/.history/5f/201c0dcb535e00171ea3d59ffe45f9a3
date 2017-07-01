@@ -1,0 +1,25 @@
+package czaspracy;
+
+import java.util.ArrayList;
+
+public class Menu {
+
+	private ArrayList<Record> data;
+	
+	public Menu(ArrayList<Record> data){
+		
+		this.data = data;
+	}
+	
+	public void start(){
+		
+		
+		System.out.println("Wybierz opcję:\n"
+				+ "1. Zestawienie per pracownik.\n"
+				+ "2. Zestawienie per projekt.\n"
+				+ "3. Pojedynczy pracownik - szczegóły.\n"
+				+ "4. Pracownik w projektach - udział %.")
+	}
+	
+	
+}
