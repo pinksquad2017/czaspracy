@@ -1,6 +1,7 @@
 package czaspracy;
 
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
@@ -68,13 +69,15 @@ public class Menu {
 		System.out.println("Podaj rok:\n");
 		String year = scanner.next();
 		
+		Map<String, Double> result = data.stream().collect(Collectors.groupingBy(Record::getName, Collectors.summingDouble(Record::getTaskDuration)));
+		System.out.println(result);
 		
-		System.out.println(
-				data.stream().collect(
-			    Collectors.groupingBy(Record::getName, Collectors.summingDouble(Record::getTaskDuration))));
+		result.forEach((k,v) -> {
+			
+			System.out.println(k + " " + v);
+		});
 		
-	
-		
+				
 	}
 	
 	private void option2(){

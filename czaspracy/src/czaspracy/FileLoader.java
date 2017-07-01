@@ -21,7 +21,7 @@ public class FileLoader {
 	
 		for(File file : listOfFiles) {
 	
-			if(file.isFile()){
+			if(file.isFile() & file.getName().contains(".xls")){
 				files.add(file);
 			}
 			else if (file.isDirectory()){
