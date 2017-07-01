@@ -24,8 +24,10 @@ public class App {
 		
 			data = dataLoader.getData();
 			Menu menu = new Menu(data);
+		    
+		    
+		    
 			menu.start();
-			
 		}else{
 			
 			System.out.println("Dane nie zostały poprawnie wczytane.");

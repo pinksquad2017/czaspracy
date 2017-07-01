@@ -22,10 +22,14 @@ public class App {
 		if(dataLoader.getData() != null){
 			System.out.println("Dane zostały poprawnie wczytane.");
 		
-			data = dataLoader.getData();
-			Menu menu = new Menu(data);
-			menu.start();
+			//	data = dataLoader.getData();
 			
+		  
+			Menu menu = new Menu(data);
+		    
+		    
+		    
+			menu.start();
 		}else{
 			
 			System.out.println("Dane nie zostały poprawnie wczytane.");

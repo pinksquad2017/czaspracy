@@ -68,10 +68,18 @@ public class Menu {
 		System.out.println("Podaj rok:\n");
 		String year = scanner.next();
 		
+		System.out.println("Pracownicy:");
+		for(Record record : data){
+			System.out.println(
+					record.getName()+" " 
+		+ record.getDay()+"."+record.getMonth()+"."+record.getYear() + " "
+		+ record.getProject() + " "
+		+ record.getTaskName() + " "
+		+ record.getTaskDuration());
+		}
 		
-		System.out.println(
-				data.stream().collect(
-			    Collectors.groupingBy(Record::getName, Collectors.summingDouble(Record::getTaskDuration))));
+		data.stream().collect(
+			    Collectors.groupingBy(Record::getName, Collectors.summingDouble(Record::getTaskDuration)));
 		
 	
 		

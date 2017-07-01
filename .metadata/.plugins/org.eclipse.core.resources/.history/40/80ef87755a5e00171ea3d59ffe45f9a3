@@ -1,8 +1,6 @@
 package czaspracy;
 
-import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.stream.Collectors;
+import java.util.ArrayList;import java.util.Scanner;
 
 public class Menu {
 
@@ -45,14 +43,12 @@ public class Menu {
 			break;
 		case 3:
 			System.out.println("Wybrano opcję " + choice);
-			this.option3();
 			break;
 		case 4:
 			System.out.println("Wybrano opcję " + choice);
-			this.option4();
 			break;
 		case 5:
-			System.exit(0);
+			System.out.println("Wybrano opcję " + choice);
 			break;
 		default:
 				System.out.println("Wybierz poprawną opcję pomiędzy 1 a 5\n");
@@ -69,9 +65,9 @@ public class Menu {
 		String year = scanner.next();
 		
 		
-		System.out.println(
-				data.stream().collect(
-			    Collectors.groupingBy(Record::getName, Collectors.summingDouble(Record::getTaskDuration))));
+		for(Record record : data){
+			System.out.println(record.getName());
+		}
 		
 	
 		
@@ -82,33 +78,8 @@ public class Menu {
 		System.out.println("Podaj rok:\n");
 		String year = scanner.next();
 		
-		System.out.println("Projekty:");
-		for(Record record : data){
-			System.out.println(record.getProject());
-		}
-		
-	}
-	
-	private void option3(){
-		
-		System.out.println("Podaj imię i nazwisko pracownika:\n");
-		String name = scanner.next();
-		
 		
 		for(Record record : data){
-			if(record.getName().equals(name))
-			System.out.println(record.getProject());
-		}
-		
-	}
-	private void option4(){
-		
-		System.out.println("Podaj imię i nazwisko pracownika:\n");
-		String name = scanner.next();
-		
-		
-		for(Record record : data){
-			if(record.getName().equals(name))
 			System.out.println(record.getProject());
 		}
 		
