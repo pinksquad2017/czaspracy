@@ -1,0 +1,15 @@
+INDEX VERSION 1.129+/home/stud/jkatarzy/czaspracy/.metadata/.plugins/org.eclipse.jdt.core
+1301259417.index
+3587572536.index
+2213843896.index
+1722420018.index
+392055770.index
+3970586901.index
+2025414685.index
+1438444126.index
+1703045628.index
+1980130692.index
+1965604444.index
+3249060127.index
+3551370113.index
+4258116122.index

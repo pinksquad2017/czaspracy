@@ -1,0 +1,12 @@
+package czaspracy;
+
+
+//załaduj dane z folderu źródłowego i 
+//umieść w strukturze danych
+
+public class DataLoader {
+	
+	
+	
+
+}
