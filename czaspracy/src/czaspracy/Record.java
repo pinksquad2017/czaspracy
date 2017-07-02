@@ -87,6 +87,9 @@ public class Record {
 	
 	public void printRecord() {
 		System.out.println(name);
+		System.out.println(taskName);
+		System.out.println(taskDuration);
+		
 	}
 	
 

@@ -14,7 +14,7 @@ public class FileLoader {
 		files = new ArrayList<>();
 	}
 	public ArrayList<File> getFiles(String directoryPath) {
-
+		System.out.println(directoryPath);
 		File folder = new File(directoryPath);
 		File[] listOfFiles = folder.listFiles();
 		
