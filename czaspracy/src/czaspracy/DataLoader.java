@@ -14,17 +14,7 @@ public class DataLoader {
 	
 	public ArrayList<Record> getData(){
 		
-		//dane testowe
-		ArrayList<Record> data = new ArrayList<Record>();
-		data.add(new Record("Jan Kowalski","analiza","analiza danych","1","12","2016", 2));
-		data.add(new Record("Andrzej Nowak","analiza","analiza danych","1","12","2016", 3));
-		data.add(new Record("Andrzej Nowak","analiza","analiza danych","2","12","2016", 3));
-		data.add(new Record("Andrzej Nowak","analiza","analiza danych","2","12","2016", 3));
-		data.add(new Record("Stefan Wójcik","raporty","analiza danych","2","12","2016", 3));
-		data.add(new Record("Andrzej Nowak","analiza","raporty","2","12","2015", 3));
-		data.add(new Record("Stefan Wójcik","raport","analiza danych","2","12","2015", 3));
-		
-		return data;
+		return new ArrayList<Record>();
 	}
 	
 	
