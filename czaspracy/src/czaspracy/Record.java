@@ -11,20 +11,6 @@ public class Record {
 	private String month;
 	private String year;
 
-	
-	public Record(String name, String taskName, 
-			String project, String day, String month,String year, double taskDuration){
-		
-		this.name = name;
-		this.taskName = taskName;
-		this.taskDuration = taskDuration;
-		this.project = project;
-		this.day = day;
-		this.month = month;
-		this.year = year;
-		
-	}
-	
 	public Record(){
 		
 	}
@@ -97,6 +83,13 @@ public class Record {
 
 	public void setYear(String year) {
 		this.year = year;
+	}
+	
+	public void printRecord() {
+		System.out.println(name);
+		System.out.println(taskName);
+		System.out.println(taskDuration);
+		
 	}
 	
 
