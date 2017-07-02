@@ -1,7 +1,6 @@
 package czaspracy;
-
+import czaspracy.FileLoader;
 import java.util.ArrayList;
-
 public class App {
 	
 	ArrayList<Record> data;
@@ -10,7 +9,7 @@ public class App {
 		
 		App app = new App();
 		app.start();
-		
+		FileLoader.getCatalogYears(".//");
 		
 	}
 	
