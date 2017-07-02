@@ -1,31 +1,32 @@
 package czaspracy;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 //ładowanie danych z pliku źródłowego do lokalnej bazy
 
-public class DataLoader {
+//public class DataLoader {
+//
+//	
+//	
+//	public DataLoader(){
+//		
+//	}
+//	
+//	public ArrayList<Record> getData(){
+//		
+//		return new ArrayList<Record>();
+//	}
+//	
+//	
+//	
+//	
+//	
+//	
+//	
+//}
 
-	
-	
-	public DataLoader(){
-		
-	}
-	
-	public ArrayList<Record> getData(){
-		
-		return new ArrayList<Record>();
-	}
-	
-	
-	
-	
-	
-	
-	
-}
 
-/*
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -45,55 +46,75 @@ import org.apache.poi.ss.util.CellReference;
 
 public class DataLoader {
 
-    public static void main(String[] args) throws IOException {
-        DataLoader rFile = new DataLoader();
-        ArrayList<File> myFiles = new ArrayList();
-        myFiles.add(new File("Kowalski_Jan.xls"));
-        rFile.readData(myFiles);
-    }
-    
-    ArrayList<Record> recordList = new ArrayList<Record>();
-    //Model model;
-    
-    public DataLoader() {
-        //model = new Model();
-    }
-    
-    public void readData(List<File> files) throws IOException {
-        for (File file : files) {
-            readFile(file);
-        }
-    }
-    
-    private void readFile(File dataFile) throws IOException {
-        InputStream inp = new FileInputStream(dataFile);
-        HSSFWorkbook wb = new HSSFWorkbook(new POIFSFileSystem(inp));
-        
-        DataFormatter formatter = new DataFormatter();
-        // iteracja po sheetach
-        Sheet sheet1 = wb.getSheetAt(0);
-            for (Row row : sheet1) {
-                Record r = new Record();
-                r.setProject(sheet1.getSheetName());
-                r.setName(dataFile.getName());
-                
-            
-                r.setTaskName(row.getCell(1).getStringCellValue());
-                r.setTaskDuration(row.getCell(2).getNumericCellValue());
-                // dodanie rekordu
-                // ustawienie dat
-                
-                for (Cell cell : row) {
-                    
+//	public static void main(String[] args) throws IOException {
+//		DataLoader rFile = new DataLoader();
+//		ArrayList<File> myFiles = new ArrayList();
+//		myFiles.add(new File("Kowalski_Jan.xls"));
+//		rFile.readData(myFiles);
+//	}
 
-                    // get the text that appears in the cell by getting the cell value and applying any data formats (Date, 0.00, 1.23e9, $1.23, etc)
-                    String text = formatter.formatCellValue(cell);
-                    System.out.println(text);
+	ArrayList<Record> recordList = new ArrayList<Record>();
+	// Model model;
 
-                    
-                }
-            }
+	public DataLoader() {
+		// model = new Model();
+	}
 
-    }
+	public void readData(List<File> files) throws IOException {
+		for (File file : files) {
+			readFile(file);
+		}
+	}
+	
+	public ArrayList<Record> getData() throws IOException{
+		// 
+		DataLoader rFile = new DataLoader();
+		FileLoader fLoader = new FileLoader();
+		ArrayList<File> myFiles = fLoader.getFiles(System.getProperty("user.dir"));
+		rFile.readData(myFiles);
+		return recordList;
+	}
 
-*/
+	private void readFile(File dataFile) throws IOException {
+		InputStream inp = new FileInputStream(dataFile);
+		HSSFWorkbook wb = new HSSFWorkbook(new POIFSFileSystem(inp));
+
+		for (Sheet sheet : wb) { // petla po arkuszach
+			for (Row row : sheet) { // petla po wierszach
+				if (row.getRowNum() == 0) {
+					continue; // pomija naglowek
+				} 
+				try  {
+					Record r = new Record();
+					r.setProject(sheet.getSheetName());
+					r.setName(dataFile.getName());
+
+					r.setTaskName(row.getCell(1).getStringCellValue());
+					r.setTaskDuration(row.getCell(2).getNumericCellValue());
+
+					Calendar cal = Calendar.getInstance();
+					cal.setTime(row.getCell(0).getDateCellValue());
+
+					String day = Integer.toString(cal.get(Calendar.DAY_OF_MONTH));
+					String month = Integer.toString(cal.get(Calendar.MONTH));
+					String year = Integer.toString(cal.get(Calendar.YEAR));
+
+					r.setDay(day);
+					r.setMonth(month);
+					r.setYear(year);
+
+					recordList.add(r);
+					r.printRecord();
+					
+				} finally {
+				}
+
+//				for (Cell cell : row) {
+//
+//					System.out.println(cell);
+
+			//	}
+			}
+		}
+	}
+}

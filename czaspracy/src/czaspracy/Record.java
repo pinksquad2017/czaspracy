@@ -85,5 +85,9 @@ public class Record {
 		this.year = year;
 	}
 	
+	public void printRecord() {
+		System.out.println(name);
+	}
+	
 
 }
