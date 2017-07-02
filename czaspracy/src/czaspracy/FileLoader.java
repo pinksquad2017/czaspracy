@@ -8,11 +8,33 @@ import java.util.List;
 public class FileLoader {
 	
 	ArrayList<File> files;
-
+	static ArrayList<String> catalogYear = new ArrayList();
 	
 	public FileLoader(){
 		files = new ArrayList<>();
+		
+	
 	}
+	
+	public static String getCatalogYears(String directoryPath){
+		
+		File folder = new File(directoryPath);
+		
+		File[] listOfFiles = folder.listFiles();
+		
+		for (File file: listOfFiles) {
+			if( file.isDirectory()) {
+				catalogYear.add(file.getName().toString());
+			}
+		}
+		String formatedCatalogYear = catalogYear.toString();
+		formatedCatalogYear = formatedCatalogYear.substring(1, formatedCatalogYear.length()-1);
+		System.out.println("Dane zostaly zaladowane dla nastepujacych lat: " + formatedCatalogYear);
+		return formatedCatalogYear;		
+		
+	}
+	
+	
 	public ArrayList<File> getFiles(String directoryPath) {
 		System.out.println(directoryPath);
 		File folder = new File(directoryPath);
