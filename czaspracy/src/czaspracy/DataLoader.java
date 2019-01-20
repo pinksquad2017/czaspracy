@@ -13,12 +13,9 @@ import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 
-
 public class DataLoader {
 
-
 	ArrayList<Record> recordList;
-	
 
 	public DataLoader() {
 		recordList = new ArrayList<Record>();
@@ -31,12 +28,10 @@ public class DataLoader {
 	}
 
 	public ArrayList<Record> getData() throws IOException {
-		//
 		DataLoader rFile = new DataLoader();
 		FileLoader fLoader = new FileLoader();
 		ArrayList<File> myFiles = fLoader.getFiles(System.getProperty("user.dir"));
 		rFile.readData(myFiles);
-		//readData(myFiles);
 		return rFile.recordList;
 	}
 
@@ -47,23 +42,17 @@ public class DataLoader {
 			HSSFWorkbook wb;
 			try {
 				wb = new HSSFWorkbook(new POIFSFileSystem(inp));
-				for (Sheet sheet : wb) { // petla po arkuszach
-					for (Row row : sheet) { // petla po wierszach
+				for (Sheet sheet : wb) { // iterating through sheets
+					for (Row row : sheet) { // iterating through rows
 						if (row.getRowNum() == 0) {
-							continue; // pomija naglowek
+							continue; // skip headline
 						}
-						
-						if (row.getCell(0) == null || row.getCell(1) == null || row.getCell(2)  == null ) {
+						if (row.getCell(0) == null || row.getCell(1) == null || row.getCell(2) == null) {
 							continue;
 						}
-
 						Record r = new Record();
 						r.setProject(sheet.getSheetName());
-
-						// String name = dataFile.getName()
-						// int
-						r.setName(dataFile.getName());
-
+						r.setName(dataFile.getName().substring(0, dataFile.getName().length() - 4));
 						r.setTaskName(row.getCell(1).getStringCellValue());
 						r.setTaskDuration(row.getCell(2).getNumericCellValue());
 
@@ -79,17 +68,13 @@ public class DataLoader {
 						r.setYear(year);
 
 						recordList.add(r);
-						//r.printRecord();
-
 					}
 				}
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
